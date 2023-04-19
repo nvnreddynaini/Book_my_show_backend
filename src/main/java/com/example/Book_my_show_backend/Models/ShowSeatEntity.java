@@ -21,9 +21,9 @@ public class ShowSeatEntity {
 
     //private int rate;
 
-    @Enumerated(value = EnumType.STRING)
     private String seatNo;
 
+    @Enumerated(value = EnumType.STRING)
     private SeatType seatType;
 
     private boolean booked;
