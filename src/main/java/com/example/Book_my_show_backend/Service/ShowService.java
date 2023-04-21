@@ -38,6 +38,21 @@ public class ShowService {
         showEntity.setMovie(movieEntity);
         showEntity.setTheater(theaterEntity);
 
+        //Because of Bi-directional Mapping
+        //movieEntity.getShowEntityList().add(showEntity);
+        List<ShowEntity> currShowList = movieEntity.getShowEntityList();
+        currShowList.add(showEntity);
+        movieEntity.setShowEntityList(currShowList);
+        //movieRepository.save(movieEntity);
+
+        //Because of Bi-directional Mapping
+        //theaterEntity.getListOfShows().add(showEntity);
+        List<ShowEntity> currListShows = theaterEntity.getListOfShows();
+        currListShows.add(showEntity);
+        theaterEntity.setListOfShows(currListShows);
+        //theaterRepository.save(theaterEntity);
+
+
         List<ShowSeatEntity> seatEntityList = createShowSeats(theaterEntity.getTheaterSeatEntityList());
 
         showEntity.setListOfSeats(seatEntityList);
@@ -48,7 +63,10 @@ public class ShowService {
             showSeat.setShow(showEntity);
         }
 
-        showRepository.save(showEntity);
+        movieRepository.save(movieEntity);
+        //showRepository.save(showEntity); //This doesn't need to be called because parent save is called.
+
+        theaterRepository.save(theaterEntity);
 
         return "Show Added Successfully";
 
