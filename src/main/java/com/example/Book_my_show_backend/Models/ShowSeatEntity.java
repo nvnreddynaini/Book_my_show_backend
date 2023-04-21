@@ -3,6 +3,7 @@ package com.example.Book_my_show_backend.Models;
 import com.example.Book_my_show_backend.Enums.SeatType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,14 +13,13 @@ import java.util.Date;
 @Table(name = "show_seats")
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 public class ShowSeatEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    //private int rate;
 
     private String seatNo;
 

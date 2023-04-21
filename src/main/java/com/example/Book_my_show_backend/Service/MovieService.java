@@ -26,4 +26,10 @@ public class MovieService {
         return "Movie Added Successfully";
     }
 
+    public MovieEntity getMovie(String movieName){
+
+        return movieRepository.findBymovieName(movieName);
+
+    }
+
 }
